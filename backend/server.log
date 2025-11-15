@@ -1,0 +1,3 @@
+⚠️ JWT_SECRET is not set. Token signing/verifying will not work.
+🚀 Server running on http://localhost:8081
+✅ MongoDB connected
