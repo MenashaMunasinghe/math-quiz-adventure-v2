@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Center everything inside section */
+section {
+  text-align: center;
+  color: white;
+  background: url('bd.jpg') no-repeat center center/cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;   /* stack items vertically */
+  justify-content: center;  /* center vertically */
+  align-items: center;      /* center horizontally */
+}
+
+h1 {
+  font-size: 4em;
+  margin-bottom: 25px; /* reduced space below title */
+  letter-spacing: 2px;
+  color: rgb(135, 238, 244);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Student image - placed just below the title */
+.student-img {
+  margin-top: -10px; /* bring image closer to title */
+  margin-bottom: 10px; /* reduce space between image and start text */
+  width: 180px;
+  height: auto;
+}
+
+/* Start text link (styled like text) */
+.start-link {
+  background: none;
+  border: none;
+  color: rgb(151, 76, 209);
+  font-size: 4em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px; /* small space before login button */
+}
+
+.start-link:hover {
+  transform: scale(1.05);
+}
+
+/* Login button */
+.btn {
+  display: block;
+  width: 220px;
+  margin: 15px auto;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background-color: white;
+  color: #2575fc;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2575fc;
+  color: white;
+  transform: scale(1.05);
+}

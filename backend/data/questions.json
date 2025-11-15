@@ -1,0 +1,122 @@
+[
+  {
+    "text": "What is the closest planet to the Sun?",
+    "options": [
+      "Venus",
+      "Mercury",
+      "Earth",
+      "Mars"
+    ],
+    "correctIndex": 1,
+    "category": "space",
+    "difficulty": "easy"
+  },
+  {
+    "text": "Which galaxy do we live in?",
+    "options": [
+      "Andromeda Galaxy",
+      "Milky Way",
+      "Triangulum Galaxy",
+      "Sombrero Galaxy"
+    ],
+    "correctIndex": 1,
+    "category": "space",
+    "difficulty": "easy"
+  },
+  {
+    "text": "What is the term for a rocky object that enters Earth's atmosphere and burns up?",
+    "options": [
+      "Comet",
+      "Asteroid",
+      "Meteor",
+      "Nebula"
+    ],
+    "correctIndex": 2,
+    "category": "space",
+    "difficulty": "easy"
+  },
+  {
+    "text": "What is the speed of light in vacuum (approx.)?",
+    "options": [
+      "3\u00d710^8 m/s",
+      "3\u00d710^6 m/s",
+      "3\u00d710^5 m/s",
+      "3\u00d710^7 m/s"
+    ],
+    "correctIndex": 0,
+    "category": "science",
+    "difficulty": "medium"
+  },
+  {
+    "text": "Who proposed the law of universal gravitation?",
+    "options": [
+      "Albert Einstein",
+      "Isaac Newton",
+      "Galileo Galilei",
+      "Niels Bohr"
+    ],
+    "correctIndex": 1,
+    "category": "science",
+    "difficulty": "medium"
+  },
+  {
+    "text": "In computer science, what does \u2018API\u2019 stand for?",
+    "options": [
+      "Application Programming Interface",
+      "Automated Program Index",
+      "Application Protocol Interface",
+      "Advanced Performance Integration"
+    ],
+    "correctIndex": 0,
+    "category": "tech",
+    "difficulty": "easy"
+  },
+  {
+    "text": "Which data structure uses FIFO order?",
+    "options": [
+      "Stack",
+      "Queue",
+      "Tree",
+      "Graph"
+    ],
+    "correctIndex": 1,
+    "category": "tech",
+    "difficulty": "medium"
+  },
+  {
+    "text": "What is the largest planet in our Solar System?",
+    "options": [
+      "Saturn",
+      "Jupiter",
+      "Uranus",
+      "Neptune"
+    ],
+    "correctIndex": 1,
+    "category": "space",
+    "difficulty": "easy"
+  },
+  {
+    "text": "Which of the following is a dwarf planet?",
+    "options": [
+      "Venus",
+      "Neptune",
+      "Pluto",
+      "Jupiter"
+    ],
+    "correctIndex": 2,
+    "category": "space",
+    "difficulty": "easy"
+  },
+  {
+    "text": "What does HTTP stand for?",
+    "options": [
+      "HyperText Transfer Protocol",
+      "High Transfer Text Protocol",
+      "Hyperlink Text Transfer Process",
+      "Host Transfer Text Protocol"
+    ],
+    "correctIndex": 0,
+    "category": "tech",
+    "difficulty": "easy"
+  }
+]

@@ -1,0 +1,94 @@
+/* Background and layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('bd.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 900px;
+  background: linear-gradient(to bottom right, #4a2287, #241343);
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  padding: 40px 30px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.header h3 {
+  color: #b5b5b5;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+/* Leaderboard Table */
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.leaderboard-table th, 
+.leaderboard-table td {
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+.leaderboard-table th {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.leaderboard-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.leaderboard-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: 0.3s;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.btn {
+  background-color: #3c2c68;
+  color: white;
+  font-size: 1.3em;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #564083;
+}
+
+.exit {
+  background-color: #672a2a;
+}
+
+.exit:hover {
+  background-color: #8b3c3c;
+}

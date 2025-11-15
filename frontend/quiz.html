@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Quiz Adventure - Level 1</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="level-box">Question 1</div>
+
+    <h2 class="question">Which of the following is a prime number?</h2>
+
+    <div class="options">
+      <button class="option">6</button>
+      <button class="option correct">7</button>
+      <button class="option">8</button>
+      <button class="option">9</button>
+    </div>
+
+    <div class="timer">
+      <div class="timer-bar"></div>
+    </div>
+  </div>
+
+  <script>
+    // Simple countdown timer (10 seconds)
+    let timerBar = document.querySelector(".timer-bar");
+    let time = 30; // seconds
+    let width = 100;
+    let countdown = setInterval(() => {
+      width -= 100 / time / 10;
+      timerBar.style.width = width + "%";
+      if (width <= 0) {
+        clearInterval(countdown);
+        alert("Time’s up!");
+      }
+    }, 100);
+
+    // Option click effect
+    document.querySelectorAll(".option").forEach(opt => {
+      opt.addEventListener("click", () => {
+        document.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
+        opt.classList.add("selected");
+      });
+    });
+  </script>
+  <script type="module" src="js/api.js"></script>
+  <script type="module" src="js/quiz.js"></script>
+</body>
+</html>
+

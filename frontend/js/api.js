@@ -1,0 +1,64 @@
+// Simple API wrapper
+const API_URL = localStorage.getItem('API_URL') || 'http://localhost:8081';
+
+export function saveToken(token) {
+  localStorage.setItem('auth_token', token);
+}
+export function getToken() {
+  return localStorage.getItem('auth_token');
+}
+export function saveUser(u) {
+  localStorage.setItem('user', JSON.stringify(u));
+}
+export function getUser() {
+  try { return JSON.parse(localStorage.getItem('user') || 'null'); } catch { return null; }
+}
+
+export async function api(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+  const res = await fetch(API_URL + path, { ...opts, headers });
+  if (!res.ok) {
+    let msg = await res.text();
+    try { const j = JSON.parse(msg); msg = j.error || JSON.stringify(j); } catch {}
+    throw new Error(msg || res.statusText);
+  }
+  const text = await res.text();
+  try { return JSON.parse(text); } catch { return text; }
+}
+
+export async function login(email, password) {
+  const data = await api('/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+  if (data.token) saveToken(data.token);
+  if (data.user) saveUser(data.user);
+  return data;
+}
+
+export async function register(username, email, password) {
+  const data = await api('/auth/register', { method: 'POST', body: JSON.stringify({ username, email, password }) });
+  if (data.token) saveToken(data.token);
+  if (data.user) saveUser(data.user);
+  return data;
+}
+
+export async function startQuiz(params = {}) {
+  const qs = new URLSearchParams(params).toString();
+  return api('/quiz/start' + (qs ? '?' + qs : ''));
+}
+
+export async function submitQuiz(answers, durationSec=0) {
+  const token = getToken();
+  return api('/quiz/submit', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ answers, durationSec })
+  });
+}
+
+export async function leaderboardTop(limit=20) {
+  return api('/leaderboard/top?limit=' + limit);
+}
+
+export async function leaderboardMe() {
+  const token = getToken();
+  return api('/leaderboard/me', { headers: { 'Authorization': 'Bearer ' + token } });
+}
