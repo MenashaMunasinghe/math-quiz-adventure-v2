@@ -1,5 +1,5 @@
 
-# Space Game + Quiz Fullstack
+# Math Quiz Adventure
 
 This package contains:
 - **frontend/**: your HTML/CSS game and pages (login, register, quiz, leaderboard, end)
