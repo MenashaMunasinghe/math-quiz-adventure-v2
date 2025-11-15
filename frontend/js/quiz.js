@@ -71,7 +71,7 @@ function startTimer() {
     if (width <= 0) {
       clearInterval(countdown);
 
-      alert("Time’s up!");
+      alert("Time’s up... Ready for a bonus question!");
 
       // Once time is up, need to open a modal or a pop-up box.
       // then call the Banana API to fetch a additional question
@@ -86,7 +86,7 @@ async function openBananaAPI() {
     const response = await fetch("https://marcconrad.com/uob/banana/api.php");
     const data = await response.json();
 
-	console.log(data);
+    console.log(data);
 
     // Create modal overlay
     const modal = document.createElement("div");
@@ -221,6 +221,7 @@ async function openBananaAPI() {
           clearInterval(timerId);
           const durationSec = Math.floor((Date.now() - startTime) / 1000);
           try {
+            normalizeAnswersBeforeSubmit();
             const res = await submitQuiz(answers, durationSec);
             localStorage.setItem("last_score", String(res.score || 0));
             localStorage.setItem(
@@ -239,6 +240,7 @@ async function openBananaAPI() {
         clearInterval(timerId);
         const durationSec = Math.floor((Date.now() - startTime) / 1000);
         try {
+          normalizeAnswersBeforeSubmit();
           const res = await submitQuiz(answers, durationSec);
           localStorage.setItem("last_score", String(res.score || 0));
           localStorage.setItem(
@@ -259,6 +261,7 @@ async function openBananaAPI() {
       clearInterval(timerId);
       const durationSec = Math.floor((Date.now() - startTime) / 1000);
       try {
+        normalizeAnswersBeforeSubmit();
         const res = await submitQuiz(answers, durationSec);
         localStorage.setItem("last_score", String(res.score || 0));
         localStorage.setItem("last_total", String(res.total || answers.length));
@@ -272,6 +275,18 @@ async function openBananaAPI() {
     input.focus();
   } catch (err) {
     alert("Failed to load bonus question: " + err.message);
+  }
+}
+
+function normalizeAnswersBeforeSubmit() {
+  if (!questions || !questions.length) return;
+  for (let i = 0; i < questions.length; i++) {
+    if (answers[i] === null || answers[i] === undefined) {
+      answers[i] = {
+        questionId: questions[i].id,
+        selectedIndex: null,
+      };
+    }
   }
 }
 
@@ -302,6 +317,7 @@ document.addEventListener("click", async (e) => {
       clearInterval(timerId);
       const durationSec = Math.floor((Date.now() - startTime) / 1000);
       try {
+        normalizeAnswersBeforeSubmit();
         const res = await submitQuiz(answers, durationSec);
         localStorage.setItem("last_score", String(res.score || 0));
         localStorage.setItem("last_total", String(res.total || answers.length));
