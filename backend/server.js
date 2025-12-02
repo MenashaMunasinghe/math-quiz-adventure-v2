@@ -3,18 +3,15 @@
  * Connects to MongoDB, sets up middleware, and registers routes.
  */
 
+import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 
 import authRoutes from "./src/routes/auth.js";
 import quizRoutes from "./src/routes/quiz.js";
 import leaderboardRoutes from "./src/routes/leaderboard.js";
-
-// Load environment variables from .env file
-dotenv.config();
 const app = express();
 
 // ============ Middleware ============
