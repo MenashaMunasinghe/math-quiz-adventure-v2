@@ -9,8 +9,8 @@ section {
   text-align: center;
   color: white;
   background: url('bd.jpg') no-repeat center center/cover;
-  height: 100vh;
-  width: 100vw;
+  min-height: calc(100vh - 64px);
+  width: 100%;
   display: flex;
   flex-direction: column;   /* stack items vertically */
   justify-content: center;  /* center vertically */
