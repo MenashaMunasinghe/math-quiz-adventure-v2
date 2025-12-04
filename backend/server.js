@@ -3,7 +3,7 @@
  * Connects to MongoDB, sets up middleware, and registers routes.
  */
 
-import 'dotenv/config';
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
