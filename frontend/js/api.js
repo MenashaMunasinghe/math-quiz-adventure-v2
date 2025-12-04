@@ -43,12 +43,24 @@ export function getUser() {
 }
 
 export async function api(path, opts = {}) {
+  const token = getToken();
   const headers = {
     "Content-Type": "application/json",
     ...(opts.headers || {}),
+    ...(token ? { Authorization: "Bearer " + token } : {}),
   };
+
   const res = await fetch(API_URL + path, { ...opts, headers });
   if (!res.ok) {
+    // If token is invalid or missing, force logout and redirect to login
+    if (res.status === 401) {
+      try {
+        localStorage.removeItem("auth_token");
+        localStorage.removeItem("user");
+      } catch {}
+      // Redirect user to login page so they can re-authenticate
+      if (typeof window !== "undefined") window.location.href = "login.html";
+    }
     let msg = await res.text();
     try {
       const j = JSON.parse(msg);
@@ -90,10 +102,8 @@ export async function startQuiz(params = {}) {
 }
 
 export async function submitQuiz(answers, durationSec = 0) {
-  const token = getToken();
   return api("/quiz/submit", {
     method: "POST",
-    headers: { Authorization: "Bearer " + token },
     body: JSON.stringify({ answers, durationSec }),
   });
 }
@@ -103,8 +113,14 @@ export async function leaderboardTop(limit = 20) {
 }
 
 export async function leaderboardMe() {
-  const token = getToken();
-  return api("/leaderboard/me", {
-    headers: { Authorization: "Bearer " + token },
-  });
+  return api("/leaderboard/me");
+}
+
+/**
+ * Clear auth state (token + user) from localStorage and optionally navigate.
+ */
+export function logout(redirect = true) {
+  localStorage.removeItem("auth_token");
+  localStorage.removeItem("user");
+  if (redirect) window.location.href = "login.html";
 }

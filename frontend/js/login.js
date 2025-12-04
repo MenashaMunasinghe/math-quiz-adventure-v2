@@ -2,7 +2,12 @@
  * Login page handler: authenticate user and redirect to quiz on success.
  */
 
-import { login } from "./api.js";
+import { login, getToken } from "./api.js";
+
+// Prevent access to login if already authenticated
+if (getToken()) {
+  window.location.href = "quiz.html";
+}
 
 // Get form element and attach submit handler
 const form = document.querySelector("form");

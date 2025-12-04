@@ -7,7 +7,6 @@ import express from "express";
 import Question from "../models/Question.js";
 import QuizAttempt from "../models/QuizAttempt.js";
 import User from "../models/User.js";
-import { optionalAuth } from "../utils/auth.js";
 
 const router = express.Router();
 
@@ -62,7 +61,7 @@ router.get("/start", async (req, res) => {
  *
  * Returns: { score, total, accuracy, attemptId }
  */
-router.post("/submit", optionalAuth, async (req, res) => {
+router.post("/submit", async (req, res) => {
   try {
     const { answers = [], durationSec = 0 } = req.body;
 

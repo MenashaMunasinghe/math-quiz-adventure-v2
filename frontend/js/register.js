@@ -2,7 +2,12 @@
  * Registration page handler: create account and redirect to quiz on success.
  */
 
-import { register } from "./api.js";
+import { register, getToken } from "./api.js";
+
+// Prevent access to register if already authenticated
+if (getToken()) {
+  window.location.href = "quiz.html";
+}
 
 // Get form element and attach submit handler
 const form = document.querySelector("form");

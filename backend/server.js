@@ -12,6 +12,7 @@ import mongoose from "mongoose";
 import authRoutes from "./src/routes/auth.js";
 import quizRoutes from "./src/routes/quiz.js";
 import leaderboardRoutes from "./src/routes/leaderboard.js";
+import { requireAuth } from "./src/utils/auth.js";
 const app = express();
 
 // ============ Middleware ============
@@ -52,9 +53,12 @@ app.get("/", (req, res) =>
 );
 
 // API routes
+// Public auth routes (login/register)
 app.use("/auth", authRoutes); // POST /auth/login, /auth/register
-app.use("/quiz", quizRoutes); // GET /quiz/start, POST /quiz/submit
-app.use("/leaderboard", leaderboardRoutes); // GET /leaderboard/top, /leaderboard/me
+
+// Protect all other API routes with JWT auth guard
+app.use("/quiz", requireAuth, quizRoutes); // all /quiz endpoints require auth
+app.use("/leaderboard", requireAuth, leaderboardRoutes); // all /leaderboard endpoints require auth
 
 // ============ Error Handling ============
 
